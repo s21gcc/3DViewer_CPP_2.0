@@ -1,0 +1,3 @@
+/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cmake-build-debug/CMakeFiles/3DViewer_CPP_2_0.dir
+/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cmake-build-debug/CMakeFiles/rebuild_cache.dir
