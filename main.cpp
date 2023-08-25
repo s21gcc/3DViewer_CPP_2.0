@@ -1,6 +1,8 @@
 #include <iostream>
+#include "model/parser.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
-    return 0;
+    Parser parser;
+    parser.ParseFile("/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cube.obj");
+    std::cout << "finish";
 }

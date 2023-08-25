@@ -3,4 +3,4 @@ project(3DViewer_CPP_2_0)
 
 set(CMAKE_CXX_STANDARD 23)
 
-add_executable(3DViewer_CPP_2_0 main.cpp)
+add_executable(3DViewer_CPP_2_0 main.cpp model/parser.cc model/parser.h)
