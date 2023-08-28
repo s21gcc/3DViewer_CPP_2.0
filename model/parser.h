@@ -18,6 +18,7 @@ class Parser {
 public:
     Parser () : obj_info_({0, 0, {}, {}}) {}
     void ParseFile(const std::string& file_name);
+    ObjData GetInfo() {return obj_info_;}
 
 private:
     ObjData obj_info_;

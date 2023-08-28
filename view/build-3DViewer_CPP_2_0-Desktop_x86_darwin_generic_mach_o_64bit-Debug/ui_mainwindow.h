@@ -13,6 +13,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
+#include <QtWidgets/QPushButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include "render.h"
@@ -24,6 +25,7 @@ class Ui_MainWindow
 public:
     QWidget *centralwidget;
     Render *widget;
+    QPushButton *render_button;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -36,7 +38,10 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         widget = new Render(centralwidget);
         widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(140, 280, 120, 80));
+        widget->setGeometry(QRect(50, 120, 671, 391));
+        render_button = new QPushButton(centralwidget);
+        render_button->setObjectName(QString::fromUtf8("render_button"));
+        render_button->setGeometry(QRect(630, 0, 100, 32));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -54,6 +59,7 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        render_button->setText(QCoreApplication::translate("MainWindow", "Render", nullptr));
     } // retranslateUi
 
 };

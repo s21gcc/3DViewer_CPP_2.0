@@ -26,10 +26,10 @@ void Parser::ParseFile(const std::string& file_name) {
                 obj_info_.vertexes.push_back(z);
             }
         } else if (str_type == "f") {
-            int index;
+            std::string index;
             std::vector<int> f_line;
             while (iss >> index) {
-                f_line.push_back(index);
+                f_line.push_back(std::stoi(index));
             }
             for (size_t i = 0; i < f_line.size(); ++i) {
                 obj_info_.facets.push_back(f_line[i]);
