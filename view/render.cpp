@@ -19,7 +19,6 @@ void Render::resizeGL(int w, int h) {
 }
 
 void Render::paintGL() {
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glVertexPointer(3, GL_DOUBLE, 0, oznak_pars.GetInfo().vertexes.data());
     glEnableClientState(GL_VERTEX_ARRAY);
@@ -30,9 +29,10 @@ void Render::paintGL() {
     glRotatef(xRot, 1,0,0);
     glRotatef(yRot, 0,1,0);
 
+    auto test = oznak_pars.GetInfo().facets.size();
 
     // lines
-    glDrawElements(GL_LINES, oznak_pars.GetInfo().num_facets * 2, GL_UNSIGNED_INT, oznak_pars.GetInfo().facets.data());
+    glDrawElements(GL_LINES, oznak_pars.GetInfo().facets.size(), GL_UNSIGNED_INT, oznak_pars.GetInfo().facets.data());
     glColor3f(1, 1, 1);
     glPointSize(1);
     glDrawArrays(GL_POINTS, 0, oznak_pars.GetInfo().num_vertexes);

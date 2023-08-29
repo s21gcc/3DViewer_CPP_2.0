@@ -6,17 +6,18 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-}
-
-MainWindow::~MainWindow()
-{
-    delete ui;
+    connect(ui->render_button, &QPushButton::clicked, this, &MainWindow::StartRendering);
 }
 
 
-void MainWindow::on_render_button_clicked()
+void MainWindow::StartRendering()
 {
     ui->widget->Parse();
     ui->widget->update();
 }
 
+
+MainWindow::~MainWindow()
+{
+    delete ui;
+}

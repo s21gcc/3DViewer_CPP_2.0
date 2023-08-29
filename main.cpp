@@ -1,5 +1,5 @@
 #include <iostream>
-#include "model/parser.h"
+#include "model/parser/parser.h"
 
 int main() {
     Parser parser;

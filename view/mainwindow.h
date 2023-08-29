@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../model/parser.h"
+#include "../model/parser/parser.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -18,7 +18,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_render_button_clicked();
+    void StartRendering();
 
 private:
     Ui::MainWindow *ui;

@@ -3,7 +3,7 @@
 
 #define GL_SILENCE_DEPRECATION
 #include <QOpenGLWidget>
-#include "../model/parser.h"
+#include "../model/parser/parser.h"
 
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>

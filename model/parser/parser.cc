@@ -32,8 +32,8 @@ void Parser::ParseFile(const std::string& file_name) {
                 f_line.push_back(std::stoi(index));
             }
             for (size_t i = 0; i < f_line.size(); ++i) {
-                obj_info_.facets.push_back(f_line[i]);
-                obj_info_.facets.push_back(f_line[(i + 1) % f_line.size()]);
+                obj_info_.facets.push_back(f_line[i] - 1);
+                obj_info_.facets.push_back(f_line[(i + 1) % f_line.size()] - 1);
             }
             obj_info_.num_facets++;
         }
