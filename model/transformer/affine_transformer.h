@@ -22,7 +22,7 @@ public:
     void MoveZ(double offset);
 
     void set_transformed_vertices(const std::vector<double>& vertices);
-
+    const std::vector<double>& get_transformed_vertices() {return transformed_vertices_;}
 private:
     std::vector<double> transformed_vertices_;
 };

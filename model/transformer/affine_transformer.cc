@@ -16,10 +16,10 @@ void AffineTransformer::Scale(double size) {
 void AffineTransformer::RotateX(double angle) {
     angle = angle * M_PI / 180;
     for (size_t i = 0; i < transformed_vertices_.size(); i += 3) {
-        double x = transformed_vertices_[i];
         double y = transformed_vertices_[i + 1];
-        transformed_vertices_[i] = x * std::cos(angle) + y * std::sin(angle);
-        transformed_vertices_[i + 1] = -x * std::sin(angle) + y * std::cos(angle);
+        double z = transformed_vertices_[i + 2];
+        transformed_vertices_[i + 1] = y * std::cos(angle) - z * std::sin(angle);
+        transformed_vertices_[i + 2] = y * std::sin(angle) + z * std::cos(angle);
     }
 }
 
@@ -27,9 +27,9 @@ void AffineTransformer::RotateY(double angle) {
     angle = angle * M_PI / 180;
     for (size_t i = 0; i < transformed_vertices_.size(); i += 3) {
         double x = transformed_vertices_[i];
-        double y = transformed_vertices_[i + 1];
-        transformed_vertices_[i] = x * std::cos(angle) + y * std::sin(angle);
-        transformed_vertices_[i + 1] = -x * std::sin(angle) + y * std::cos(angle);
+        double z = transformed_vertices_[i + 2];
+        transformed_vertices_[i] = x * std::cos(angle) + z * std::sin(angle);
+        transformed_vertices_[i + 2] = -x * std::sin(angle) + z * std::cos(angle);
     }
 }
 
@@ -38,8 +38,8 @@ void AffineTransformer::RotateZ(double angle) {
     for (size_t i = 0; i < transformed_vertices_.size(); i += 3) {
         double x = transformed_vertices_[i];
         double y = transformed_vertices_[i + 1];
-        transformed_vertices_[i] = x * std::cos(angle) + y * std::sin(angle);
-        transformed_vertices_[i + 1] = -x * std::sin(angle) + y * std::cos(angle);
+        transformed_vertices_[i] = x * std::cos(angle) - y * std::sin(angle);
+        transformed_vertices_[i + 1] = x * std::sin(angle) + y * std::cos(angle);
     }
 }
 

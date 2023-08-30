@@ -19,6 +19,9 @@ public:
     Parser () : obj_info_({0, 0, {}, {}}) {}
     void ParseFile(const std::string& file_name);
     ObjData GetInfo() {return obj_info_;}
+    void PrintV();
+    void set_obj_info(const ObjData& obj);
+    void set_new_vertices(const std::vector<double>& new_vertices);
 
 private:
     ObjData obj_info_;

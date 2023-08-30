@@ -40,3 +40,18 @@ void Parser::ParseFile(const std::string& file_name) {
     }
     obj_info_.num_vertexes = static_cast<int> (obj_info_.vertices.size() / 3);
 }
+
+void Parser::PrintV() {
+    for (size_t i = 0; i < obj_info_.vertices.size(); ++i) {
+        std::cout << obj_info_.vertices[i] << " ";
+        if (i % 3 == 2) std::cout << std::endl;
+    }
+}
+
+void Parser::set_obj_info(const ObjData& obj) {
+    obj_info_ = obj;
+}
+
+void Parser::set_new_vertices(const std::vector<double> &new_vertices) {
+    obj_info_.vertices = new_vertices;
+}
