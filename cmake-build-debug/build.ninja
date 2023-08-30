@@ -61,8 +61,8 @@ build CMakeFiles/3DViewer_CPP_2_0.dir/model/parser/parser.cc.o: CXX_COMPILER__3D
   OBJECT_DIR = CMakeFiles/3DViewer_CPP_2_0.dir
   OBJECT_FILE_DIR = CMakeFiles/3DViewer_CPP_2_0.dir/model/parser
 
-build CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cpp.o: CXX_COMPILER__3DViewer_CPP_2_0_Debug /Users/oznakban/CLionProjects/3DViewer_CPP_2.0/model/transformer/affine_transformer.cpp || cmake_object_order_depends_target_3DViewer_CPP_2_0
-  DEP_FILE = CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cpp.o.d
+build CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cc.o: CXX_COMPILER__3DViewer_CPP_2_0_Debug /Users/oznakban/CLionProjects/3DViewer_CPP_2.0/model/transformer/affine_transformer.cc || cmake_object_order_depends_target_3DViewer_CPP_2_0
+  DEP_FILE = CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cc.o.d
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6 -fcolor-diagnostics -std=gnu++2b
   OBJECT_DIR = CMakeFiles/3DViewer_CPP_2_0.dir
   OBJECT_FILE_DIR = CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer
@@ -75,7 +75,7 @@ build CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cpp.o
 #############################################
 # Link the executable 3DViewer_CPP_2_0
 
-build 3DViewer_CPP_2_0: CXX_EXECUTABLE_LINKER__3DViewer_CPP_2_0_Debug CMakeFiles/3DViewer_CPP_2_0.dir/main.cpp.o CMakeFiles/3DViewer_CPP_2_0.dir/model/parser/parser.cc.o CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cpp.o
+build 3DViewer_CPP_2_0: CXX_EXECUTABLE_LINKER__3DViewer_CPP_2_0_Debug CMakeFiles/3DViewer_CPP_2_0.dir/main.cpp.o CMakeFiles/3DViewer_CPP_2_0.dir/model/parser/parser.cc.o CMakeFiles/3DViewer_CPP_2_0.dir/model/transformer/affine_transformer.cc.o
   FLAGS = -g -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk -mmacosx-version-min=11.6
   OBJECT_DIR = CMakeFiles/3DViewer_CPP_2_0.dir
   POST_BUILD = :

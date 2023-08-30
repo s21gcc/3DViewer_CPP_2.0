@@ -9,17 +9,22 @@
 
 class AffineTransformer {
 public:
+    AffineTransformer() : transformed_vertices_() {};
+
+    void Scale(double size);
+
     void RotateX(double angle);
     void RotateY(double angle);
     void RotateZ(double angle);
 
-    void Scale(double size);
-
     void MoveX(double offset);
     void MoveY(double offset);
     void MoveZ(double offset);
+
+    void set_transformed_vertices(const std::vector<double>& vertices);
+
 private:
-    std::vector<int> trasformed_vertexies_;
+    std::vector<double> transformed_vertices_;
 };
 
 

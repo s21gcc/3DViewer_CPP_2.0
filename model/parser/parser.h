@@ -10,7 +10,7 @@
 struct ObjData {
     int num_vertexes;
     int num_facets;
-    std::vector<double> vertexes;
+    std::vector<double> vertices;
     std::vector<int> facets;
 };
 

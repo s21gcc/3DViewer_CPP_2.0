@@ -1,5 +1,6 @@
 #include <iostream>
 #include "model/parser/parser.h"
+#include "model/transformer/affine_transformer.h"
 
 int main() {
     Parser parser;

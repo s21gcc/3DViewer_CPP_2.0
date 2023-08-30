@@ -21,9 +21,9 @@ void Parser::ParseFile(const std::string& file_name) {
         if (str_type == "v") {
             double x, y, z;
             if (iss >> x >> y >> z) {
-                obj_info_.vertexes.push_back(x);
-                obj_info_.vertexes.push_back(y);
-                obj_info_.vertexes.push_back(z);
+                obj_info_.vertices.push_back(x);
+                obj_info_.vertices.push_back(y);
+                obj_info_.vertices.push_back(z);
             }
         } else if (str_type == "f") {
             std::string index;
@@ -38,5 +38,5 @@ void Parser::ParseFile(const std::string& file_name) {
             obj_info_.num_facets++;
         }
     }
-    obj_info_.num_vertexes = static_cast<int> (obj_info_.vertexes.size() / 3);
+    obj_info_.num_vertexes = static_cast<int> (obj_info_.vertices.size() / 3);
 }
