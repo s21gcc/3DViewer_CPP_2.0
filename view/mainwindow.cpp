@@ -12,8 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 void MainWindow::StartRendering()
 {
-    ui->widget->Parse();
-    ui->widget->update();
+    ui->gl_visual->Parse();
+    ui->gl_visual->update();
 }
 
 
@@ -21,3 +21,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+void MainWindow::on_double_spin_box_scale_valueChanged(double arg1)
+{
+    ui->gl_visual->Scale(arg1);
+}
+

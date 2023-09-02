@@ -1,13 +1,9 @@
 #include <iostream>
-#include "model/parser/parser.h"
-#include "model/transformer/affine_transformer.h"
+#include "model/model.h"
 
 int main() {
-    Parser parser;
-    parser.ParseFile("/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cube.obj");
-    AffineTransformer denis_trans;
-    denis_trans.set_transformed_vertices(parser.GetInfo().vertices);
-    denis_trans.RotateZ(100);
-    parser.set_new_vertices(denis_trans.get_transformed_vertices());
-    parser.PrintV();
+    Model _3d_obj;
+    _3d_obj.ParseObj("/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cube.obj");
+    _3d_obj.RotateZ(10);
+    _3d_obj.PrintV();
 }

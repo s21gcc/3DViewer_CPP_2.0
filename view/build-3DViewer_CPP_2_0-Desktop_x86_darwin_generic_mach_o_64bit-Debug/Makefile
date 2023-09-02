@@ -52,12 +52,16 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../../model/parser/parser.cc \
+SOURCES       = ../../model/model.cc \
+		../../model/obj/obj.cc \
+		../../model/transformer/affine_transformer.cc \
 		../main.cpp \
 		../mainwindow.cpp \
 		../render.cpp moc_mainwindow.cpp \
 		moc_render.cpp
-OBJECTS       = parser.o \
+OBJECTS       = model.o \
+		obj.o \
+		affine_transformer.o \
 		main.o \
 		mainwindow.o \
 		render.o \
@@ -318,9 +322,13 @@ DIST          = /usr/local/share/qt/mkspecs/features/spec_pre.prf \
 		/usr/local/share/qt/mkspecs/features/exceptions.prf \
 		/usr/local/share/qt/mkspecs/features/yacc.prf \
 		/usr/local/share/qt/mkspecs/features/lex.prf \
-		../../3DViewer_CPP_2_0.pro ../../model/parser/parser.h \
+		../../3DViewer_CPP_2_0.pro ../../model/model.h \
+		../../model/obj/obj.h \
+		../../model/transformer/affine_transformer.h \
 		../mainwindow.h \
-		../render.h ../../model/parser/parser.cc \
+		../render.h ../../model/model.cc \
+		../../model/obj/obj.cc \
+		../../model/transformer/affine_transformer.cc \
 		../main.cpp \
 		../mainwindow.cpp \
 		../render.cpp
@@ -901,8 +909,8 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/local/share/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../model/parser/parser.h ../mainwindow.h ../render.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../../model/parser/parser.cc ../main.cpp ../mainwindow.cpp ../render.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../../model/model.h ../../model/obj/obj.h ../../model/transformer/affine_transformer.h ../mainwindow.h ../render.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../model/model.cc ../../model/obj/obj.cc ../../model/transformer/affine_transformer.cc ../main.cpp ../mainwindow.cpp ../render.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../mainwindow.ui $(DISTDIR)/
 
 
@@ -944,7 +952,7 @@ compiler_moc_header_clean:
 moc_mainwindow.cpp: ../mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
 		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../model/parser/parser.h \
+		../../model/obj/obj.h \
 		moc_predefs.h \
 		/usr/local/share/qt/libexec/moc
 	/usr/local/share/qt/libexec/moc $(DEFINES) --include /Users/oznakban/CLionProjects/3DViewer_CPP_2.0/view/build-3DViewer_CPP_2_0-Desktop_x86_darwin_generic_mach_o_64bit-Debug/moc_predefs.h -I/usr/local/share/qt/mkspecs/macx-clang -I/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/view -I/usr/local/lib/QtOpenGLWidgets.framework/Headers -I/usr/local/lib/QtWidgets.framework/Headers -I/usr/local/lib/QtOpenGL.framework/Headers -I/usr/local/lib/QtGui.framework/Headers -I/usr/local/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/13.0.0/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX12.1.sdk/usr/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -F/usr/local/lib ../mainwindow.h -o moc_mainwindow.cpp
@@ -952,7 +960,9 @@ moc_mainwindow.cpp: ../mainwindow.h \
 moc_render.cpp: ../render.h \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
-		../../model/parser/parser.h \
+		../../model/model.h \
+		../../model/obj/obj.h \
+		../../model/transformer/affine_transformer.h \
 		/usr/local/lib/QtGui.framework/Headers/QMouseEvent \
 		/usr/local/lib/QtGui.framework/Headers/qevent.h \
 		moc_predefs.h \
@@ -971,7 +981,9 @@ ui_mainwindow.h: ../mainwindow.ui \
 		../render.h \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
-		../../model/parser/parser.h \
+		../../model/model.h \
+		../../model/obj/obj.h \
+		../../model/transformer/affine_transformer.h \
 		/usr/local/lib/QtGui.framework/Headers/QMouseEvent \
 		/usr/local/lib/QtGui.framework/Headers/qevent.h
 	/usr/local/share/qt/libexec/uic ../mainwindow.ui -o ui_mainwindow.h
@@ -988,13 +1000,21 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
-parser.o: ../../model/parser/parser.cc ../../model/parser/parser.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o parser.o ../../model/parser/parser.cc
+model.o: ../../model/model.cc ../../model/model.h \
+		../../model/obj/obj.h \
+		../../model/transformer/affine_transformer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o model.o ../../model/model.cc
+
+obj.o: ../../model/obj/obj.cc ../../model/obj/obj.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj.o ../../model/obj/obj.cc
+
+affine_transformer.o: ../../model/transformer/affine_transformer.cc ../../model/transformer/affine_transformer.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o affine_transformer.o ../../model/transformer/affine_transformer.cc
 
 main.o: ../main.cpp ../mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
 		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../model/parser/parser.h \
+		../../model/obj/obj.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QApplication \
 		/usr/local/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../main.cpp
@@ -1002,11 +1022,13 @@ main.o: ../main.cpp ../mainwindow.h \
 mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 		/usr/local/lib/QtWidgets.framework/Headers/QMainWindow \
 		/usr/local/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../model/parser/parser.h \
+		../../model/obj/obj.h \
 		ui_mainwindow.h \
 		../render.h \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
+		../../model/model.h \
+		../../model/transformer/affine_transformer.h \
 		/usr/local/lib/QtGui.framework/Headers/QMouseEvent \
 		/usr/local/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../mainwindow.cpp
@@ -1014,7 +1036,9 @@ mainwindow.o: ../mainwindow.cpp ../mainwindow.h \
 render.o: ../render.cpp ../render.h \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
 		/usr/local/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
-		../../model/parser/parser.h \
+		../../model/model.h \
+		../../model/obj/obj.h \
+		../../model/transformer/affine_transformer.h \
 		/usr/local/lib/QtGui.framework/Headers/QMouseEvent \
 		/usr/local/lib/QtGui.framework/Headers/qevent.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o render.o ../render.cpp

@@ -11,10 +11,9 @@
 
 #include <QtCore/QVariant>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QDoubleSpinBox>
 #include <QtWidgets/QMainWindow>
-#include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QStatusBar>
 #include <QtWidgets/QWidget>
 #include "render.h"
 
@@ -24,32 +23,27 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
-    Render *widget;
+    Render *gl_visual;
     QPushButton *render_button;
-    QMenuBar *menubar;
-    QStatusBar *statusbar;
+    QDoubleSpinBox *double_spin_box_scale;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(800, 600);
+        MainWindow->resize(1192, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
-        widget = new Render(centralwidget);
-        widget->setObjectName(QString::fromUtf8("widget"));
-        widget->setGeometry(QRect(50, 120, 671, 391));
+        gl_visual = new Render(centralwidget);
+        gl_visual->setObjectName(QString::fromUtf8("gl_visual"));
+        gl_visual->setGeometry(QRect(170, 100, 801, 431));
         render_button = new QPushButton(centralwidget);
         render_button->setObjectName(QString::fromUtf8("render_button"));
-        render_button->setGeometry(QRect(630, 0, 100, 32));
+        render_button->setGeometry(QRect(510, 20, 111, 51));
+        double_spin_box_scale = new QDoubleSpinBox(centralwidget);
+        double_spin_box_scale->setObjectName(QString::fromUtf8("double_spin_box_scale"));
+        double_spin_box_scale->setGeometry(QRect(20, 180, 121, 21));
         MainWindow->setCentralWidget(centralwidget);
-        menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 800, 24));
-        MainWindow->setMenuBar(menubar);
-        statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
-        MainWindow->setStatusBar(statusbar);
 
         retranslateUi(MainWindow);
 

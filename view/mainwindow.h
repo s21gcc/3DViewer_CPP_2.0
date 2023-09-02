@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "../model/parser/parser.h"
+#include "../model/obj/obj.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -19,6 +19,8 @@ public:
 
 private slots:
     void StartRendering();
+
+    void on_double_spin_box_scale_valueChanged(double arg1);
 
 private:
     Ui::MainWindow *ui;

@@ -20,7 +20,7 @@ void Render::resizeGL(int w, int h) {
 
 void Render::paintGL() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    glVertexPointer(3, GL_DOUBLE, 0, oznak_pars.GetInfo().vertexes.data());
+    glVertexPointer(3, GL_DOUBLE, 0, _3d_obj.GetObjData().vertices.data());
     glEnableClientState(GL_VERTEX_ARRAY);
     glLoadIdentity();
     glMatrixMode(GL_MODELVIEW);
@@ -29,18 +29,17 @@ void Render::paintGL() {
     glRotatef(xRot, 1,0,0);
     glRotatef(yRot, 0,1,0);
 
-    auto test = oznak_pars.GetInfo().facets.size();
 
     // lines
-    glDrawElements(GL_LINES, oznak_pars.GetInfo().facets.size(), GL_UNSIGNED_INT, oznak_pars.GetInfo().facets.data());
+    glDrawElements(GL_LINES, _3d_obj.GetObjData().facets.size(), GL_UNSIGNED_INT, _3d_obj.GetObjData().facets.data());
     glColor3f(1, 1, 1);
     glPointSize(1);
-    glDrawArrays(GL_POINTS, 0, oznak_pars.GetInfo().num_vertexes);
+    glDrawArrays(GL_POINTS, 0, _3d_obj.GetObjData().num_vertexes);
     // Код рисования с использованием OpenGL
 }
 
 void Render::Parse() {
-    oznak_pars.ParseFile("/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cube.obj");
+    _3d_obj.ParseObj("/Users/oznakban/CLionProjects/3DViewer_CPP_2.0/cube.obj");
     update();
 }
 

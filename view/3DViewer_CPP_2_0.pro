@@ -9,13 +9,17 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    ../model/parser/parser.cc \
+    ../model/model.cc \
+    ../model/obj/obj.cc \
+    ../model/transformer/affine_transformer.cc \
     main.cpp \
     mainwindow.cpp \
     render.cpp
 
 HEADERS += \
-    ../model/parser/parser.h \
+    ../model/model.h \
+    ../model/obj/obj.h \
+    ../model/transformer/affine_transformer.h \
     mainwindow.h \
     render.h
 

@@ -3,7 +3,7 @@
 
 #define GL_SILENCE_DEPRECATION
 #include <QOpenGLWidget>
-#include "../model/parser/parser.h"
+#include "../model/model.h"
 
 #include <GLUT/glut.h>
 #include <OpenGL/gl.h>
@@ -15,12 +15,17 @@ class Render : public QOpenGLWidget {
 public:
     Render(QWidget *parent = nullptr);
     void Parse();
+    void Scale(double size) {
+        _3d_obj.Scale(size);
+        update();
+    }
 protected:
     void initializeGL() override;
     void resizeGL(int w, int h) override;
     void paintGL() override;
 private:
-    Parser oznak_pars;
+//    double angle, size, offset;
+    Model _3d_obj;
     float xRot, yRot;
     QPoint mPos;
     void mousePressEvent(QMouseEvent* mo) override;

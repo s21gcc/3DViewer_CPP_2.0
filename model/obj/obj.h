@@ -2,30 +2,32 @@
 // Created by Oznak Banshee on 8/25/23.
 //
 
-#ifndef INC_3DVIEWER_CPP_2_0_PARSER_H
-#define INC_3DVIEWER_CPP_2_0_PARSER_H
+#ifndef INC_3DVIEWER_CPP_2_0_OBJ_H
+#define INC_3DVIEWER_CPP_2_0_OBJ_H
 
 #include <vector>
 
-struct ObjData {
+struct ObjInfo {
     int num_vertexes;
     int num_facets;
     std::vector<double> vertices;
     std::vector<int> facets;
 };
 
-class Parser {
+class Obj {
 public:
-    Parser () : obj_info_({0, 0, {}, {}}) {}
+    Obj () : obj_model_data_({0, 0, {}, {}}) {}
     void ParseFile(const std::string& file_name);
-    ObjData GetInfo() {return obj_info_;}
+
+
+    ObjInfo get_obj_model_data() {return obj_model_data_;}
     void PrintV();
-    void set_obj_info(const ObjData& obj);
+    void set_obj_model_data(const ObjInfo& obj);
     void set_new_vertices(const std::vector<double>& new_vertices);
 
 private:
-    ObjData obj_info_;
+    ObjInfo obj_model_data_;
 };
 
 
-#endif //INC_3DVIEWER_CPP_2_0_PARSER_H
+#endif //INC_3DVIEWER_CPP_2_0_OBJ_H
